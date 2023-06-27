@@ -1,0 +1,31 @@
+from flask import Flask, request, jsonify
+import random
+import re
+
+app = Flask(__name__)
+
+# The jokes will be stored in this list
+jokes = []
+
+@app.route('/getJoke', methods=['GET'])
+def get_joke():
+    if jokes:
+        joke = random.choice(jokes)
+        return jsonify(joke_stats(joke))
+    else:
+        return jsonify({'joke': 'No jokes yet!', 'letters': 0, 'words': 0, 'sentences': 0})
+
+@app.route('/addJoke', methods=['POST'])
+def add_joke():
+    joke = request.json.get('joke', '')
+    jokes.append(joke)
+    return jsonify({'status': 'success'})
+
+def joke_stats(joke):
+    letters = len(joke)
+    words = len(joke.split())
+    sentences = len(re.findall(r'\.', joke))
+    return {'joke': joke, 'letters': letters, 'words': words, 'sentences': sentences}
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=80)
