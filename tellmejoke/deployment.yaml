@@ -22,7 +22,7 @@ spec:
           mountPath: /var/lib/postgresql/data
       containers:
       - name: postgres
-        image: postgres:13.2
+        image: postgres:latest
         volumeMounts:
         - name: tellmejoke-pv
           mountPath: /var/lib/postgresql/data
