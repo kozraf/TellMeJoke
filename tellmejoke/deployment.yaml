@@ -13,9 +13,15 @@ spec:
       labels:
         app: postgres
     spec:
+      securityContext:  # Add this section
+        runAsUser: 0
+        runAsGroup: 0
       containers:
       - name: postgres
         image: postgres:latest
+        securityContext:  # Add this section
+          runAsUser: 0
+          runAsGroup: 0
         volumeMounts:
         - name: tellmejoke-pv
           mountPath: /var/lib/postgresql/data
