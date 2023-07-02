@@ -17,12 +17,12 @@ spec:
       - name: postgres
         image: postgres:13.2
         volumeMounts:
-        - name: postgres-storage
+        - name: tellmejoke-pv
           mountPath: /var/lib/postgresql/data
         env:
         - name: POSTGRES_PASSWORD
           value: mysecretpassword
       volumes:
-      - name: postgres-storage
+      - name: tellmejoke-pv
         persistentVolumeClaim:
           claimName: tellmejoke-pvc
