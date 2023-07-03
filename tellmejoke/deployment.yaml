@@ -1,32 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: postgres
+  name: mysql
   namespace: default
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: postgres
+      app: mysql
   template:
     metadata:
       labels:
-        app: postgres
+        app: mysql
     spec:
-      securityContext:  # Add this section
-        runAsUser: 0
-        runAsGroup: 0
       containers:
-      - name: postgres
-        image: postgres:latest
-        securityContext:  # Add this section
-          runAsUser: 0
-          runAsGroup: 0
+      - name: mysql
+        image: mysql:latest
         volumeMounts:
         - name: tellmejoke-pv
-          mountPath: /var/lib/postgresql/data
+          mountPath: /var/lib/mysql
         env:
-        - name: POSTGRES_PASSWORD
+        - name: MYSQL_ROOT_PASSWORD
           value: mysecretpassword
       volumes:
       - name: tellmejoke-pv
