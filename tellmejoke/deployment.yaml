@@ -48,6 +48,6 @@ spec:
     spec:
       containers:
       - name: presentation-tier
-        image: kozraf/tellmejoke-presentationtier:1.0
+        image: kozraf/tellmejoke-presentationtier:v1.0
         ports:
         - containerPort: 80
