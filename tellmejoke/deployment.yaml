@@ -29,3 +29,25 @@ spec:
       - name: tellmejoke-pv
         persistentVolumeClaim:
           claimName: tellmejoke-pvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: presentation-tier-deployment
+  labels:
+    app: presentation-tier
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: presentation-tier
+  template:
+    metadata:
+      labels:
+        app: presentation-tier
+    spec:
+      containers:
+      - name: presentation-tier
+        image: kozraf/tellmejoke-presentationtier:1.0
+        ports:
+        - containerPort: 80
