@@ -1,31 +1,39 @@
-from flask import Flask, request, jsonify
-import random
-import re
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tell Me a Joke</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <h1>Welcome to "Tell Me a Joke"!</h1>
 
-app = Flask(__name__)
+        <button id="getJokeBtn">Tell me a joke</button>
+        <p id="jokeDisplay"></p>
 
-# The jokes will be stored in this list
-jokes = []
+        <h3>Add a Joke:</h3>
+        <textarea id="newJoke" rows="4" cols="50"></textarea>
+        <button id="addJokeBtn">Add Joke</button>
 
-@app.route('/getJoke', methods=['GET'])
-def get_joke():
-    if jokes:
-        joke = random.choice(jokes)
-        return jsonify(joke_stats(joke))
-    else:
-        return jsonify({'joke': 'No jokes yet!', 'letters': 0, 'words': 0, 'sentences': 0})
+        <h3>Joke Stats:</h3>
+        <p id="jokeStats"></p>
 
-@app.route('/addJoke', methods=['POST'])
-def add_joke():
-    joke = request.json.get('joke', '')
-    jokes.append(joke)
-    return jsonify({'status': 'success'})
+        <script>
+            $(document).ready(function(){
+                $("#getJokeBtn").click(function(){
+                    $.get("/getJoke", function(data, status){
+                        $("#jokeDisplay").html(data.joke);
+                        $("#jokeStats").html("Letters: " + data.letters + ", Words: " + data.words + ", Sentences: " + data.sentences);
+                    });
+                });
 
-def joke_stats(joke):
-    letters = len(joke)
-    words = len(joke.split())
-    sentences = len(re.findall(r'\.', joke))
-    return {'joke': joke, 'letters': letters, 'words': words, 'sentences': sentences}
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80)
+                $("#addJokeBtn").click(function(){
+                    var joke = $("#newJoke").val();
+                    $.post("/addJoke", { joke: joke }, function(data, status){
+                        alert("Joke added successfully!");
+                        $("#newJoke").val("");
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>
