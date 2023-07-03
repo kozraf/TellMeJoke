@@ -15,6 +15,7 @@ spec:
     spec:
       securityContext:
         fsGroup: 999 # GID of 'mysql' user in the container
+        runAsUser: 999
       containers:
       - name: mysql
         image: mysql:latest
