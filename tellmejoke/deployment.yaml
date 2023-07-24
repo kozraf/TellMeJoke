@@ -70,6 +70,6 @@ spec:
     spec:
       containers:
       - name: business-tier
-        image: kozraf/tellmejoke-businesstier:v1.0
+        image: kozraf/tellmejoke-businesstier:v1.1
         ports:
         - containerPort: 80
