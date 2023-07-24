@@ -9,8 +9,8 @@ jokes = [
     "Why don't some animals play cards? Because they're afraid of cheetahs!"
 ]
 
-@app.route('/')
-def home():
+@app.route('/getJoke')
+def get_joke():
     return {
         'joke': random.choice(jokes),
         'words': len(jokes[0].split()),
@@ -18,7 +18,7 @@ def home():
         'sentences': len(jokes[0].split("."))
     }
 
-@app.route('/add', methods=['POST'])
+@app.route('/addJoke', methods=['POST'])
 def add_joke():
     joke = request.json.get('joke')
     if joke:
