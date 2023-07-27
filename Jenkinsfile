@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_REGISTRY = 'docker.io' // docker.io for Docker Hub
-        DOCKER_CREDENTIALS_ID = 'docker_hub_login' // The Jenkins credential ID for Docker Hub
+        DOCKER_REGISTRY = 'docker.io' //  docker.io for Docker Hub
+        DOCKER_CREDENTIALS_ID = 'docker_hub_login' //  The Jenkins credential ID for Docker Hub
     }
 
     stages {
