@@ -12,6 +12,9 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
 
+      - name: Set DOCKER_BUILDKIT environment variable
+        run: echo 'DOCKER_BUILDKIT=1' >> $GITHUB_ENV
+
       - name: Login to Docker Hub
         uses: docker/login-action@v1
         with:
@@ -21,7 +24,7 @@ jobs:
       - name: Build and Push Business Tier Dockerfile
         uses: docker/build-push-action@v2
         with:
-          context: TellMeJoke
+          context: ..
           file: BusinessTier/Dockerfile
           push: true
           tags: kozraf/tellmejoke-businesstier:latest
@@ -29,7 +32,7 @@ jobs:
       - name: Build and Push Presentation Tier Dockerfile
         uses: docker/build-push-action@v2
         with:
-          context: TellMeJoke
+          context: ..
           file: PresentationTier/Dockerfile
           push: true
           tags: kozraf/tellmejoke-presentationtier:latest
