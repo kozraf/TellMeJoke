@@ -24,7 +24,7 @@ jobs:
           context: .
           file: BusinessTier/Dockerfile
           push: true
-          tags: kozraf/tellmejoke-presentationtier:latest
+          tags: kozraf/tellmejoke-businesstier:latest
 
       - name: Build and Push Dockerfile2
         uses: docker/build-push-action@v2
