@@ -27,7 +27,7 @@ jobs:
           tags: kozraf/tellmejoke-businesstier:latest
 
       - name: Build and Push Dockerfile2
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v2 --progress plain
         with:
           context: .
           file: PresentationTier/Dockerfile
