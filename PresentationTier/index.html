@@ -18,9 +18,11 @@
         <p id="jokeStats"></p>
 
         <script>
+            var businessTierUrl = "http://business-tier-service"; // Replace with the correct URL for your business tier
+
             $(document).ready(function(){
                 $("#getJokeBtn").click(function(){
-                    $.get("/getJoke", function(data, status){
+                    $.get(businessTierUrl + "/getJoke", function(data, status){
                         $("#jokeDisplay").html(data.joke);
                         $("#jokeStats").html("Letters: " + data.letters + ", Words: " + data.words + ", Sentences: " + data.sentences);
                     });
@@ -28,7 +30,7 @@
 
                 $("#addJokeBtn").click(function(){
                     var joke = $("#newJoke").val();
-                    $.post("/addJoke", { joke: joke }, function(data, status){
+                    $.post(businessTierUrl + "/addJoke", { joke: joke }, function(data, status){
                         alert("Joke added successfully!");
                         $("#newJoke").val("");
                     });
