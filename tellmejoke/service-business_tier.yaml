@@ -3,9 +3,12 @@ kind: Service
 metadata:
   name: business-tier-service
 spec:
+  type: NodePort
   selector:
     app: business-tier
   ports:
     - protocol: TCP
       port: 80
       targetPort: 80
+      nodePort: 30080 # You can choose an available port in the range 30000-32767
+
