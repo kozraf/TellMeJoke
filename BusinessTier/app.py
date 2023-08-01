@@ -1,7 +1,9 @@
 from flask import Flask, request
+from flask_cors import CORS
 import random
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS
 
 jokes = [
     "Why don't scientists trust atoms? Because they make up everything!",
