@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: business-tier-service
+spec:
+  selector:
+    app: business-tier
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
