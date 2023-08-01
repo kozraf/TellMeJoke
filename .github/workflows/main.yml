@@ -24,7 +24,7 @@ jobs:
       - name: Build and Push Business Tier Dockerfile
         uses: docker/build-push-action@v2
         with:
-          context: .
+          context: BusinessTier
           file: BusinessTier/Dockerfile
           push: true
           tags: kozraf/tellmejoke-businesstier:latest
@@ -32,7 +32,7 @@ jobs:
       - name: Build and Push Presentation Tier Dockerfile
         uses: docker/build-push-action@v2
         with:
-          context: .
+          context: PresentationTie
           file: PresentationTier/Dockerfile
           push: true
           tags: kozraf/tellmejoke-presentationtier:latest
