@@ -48,7 +48,7 @@ spec:
     spec:
       containers:
       - name: presentation-tier
-        image: kozraf/tellmejoke-presentationtier:v1.1
+        image: kozraf/tellmejoke-presentationtier:latest
         ports:
         - containerPort: 80
 ---
@@ -70,6 +70,6 @@ spec:
     spec:
       containers:
       - name: business-tier
-        image: kozraf/tellmejoke-businesstier:v1.1
+        image: kozraf/tellmejoke-businesstier:latest
         ports:
         - containerPort: 80
