@@ -19,6 +19,7 @@ spec:
       containers:
       - name: mysql
         image: mysql:latest
+        imagePullPolicy: Always
         volumeMounts:
         - name: tellmejoke-pv
           mountPath: /var/lib/mysql
@@ -49,6 +50,7 @@ spec:
       containers:
       - name: presentation-tier
         image: kozraf/tellmejoke-presentationtier:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
 ---
@@ -71,5 +73,6 @@ spec:
       containers:
       - name: business-tier
         image: kozraf/tellmejoke-businesstier:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
