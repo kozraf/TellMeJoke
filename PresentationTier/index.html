@@ -18,7 +18,7 @@
         <p id="jokeStats"></p>
 
         <script>
-            var businessTierUrl = "http://192.168.89.141:30086";
+            var businessTierUrl = "http://192.168.89.141:30086"; // Replace with the actual external IP
 
             $(document).ready(function(){
                 $("#getJokeBtn").click(function(){
@@ -33,11 +33,10 @@
                     $.ajax({
                         url: businessTierUrl + "/addJoke",
                         type: 'POST',
-                        contentType: 'application/json',
-                        data: JSON.stringify({ joke: joke }),
-                        dataType: 'json',
+                        contentType: 'application/json', // Set the content type to JSON
+                        data: JSON.stringify({ joke: joke }), // Convert the data to a JSON string
                         success: function(data, status) {
-                            alert(data.message);
+                            alert(data.message); // Use the message from the server response
                             $("#newJoke").val("");
                         },
                         error: function(xhr, status, error) {
@@ -50,3 +49,4 @@
         </script>
     </body>
 </html>
+
