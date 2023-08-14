@@ -20,22 +20,31 @@
         <script>
             var businessTierUrl = "http://192.168.89.141:30086"; // Replace with the actual external IP
 
-            $(document).ready(function(){
-                $("#getJokeBtn").click(function(){
-                    $.get(businessTierUrl + "/getJoke", function(data, status){
-                        $("#jokeDisplay").html(data.joke);
-                        $("#jokeStats").html("Letters: " + data.letters + ", Words: " + data.words + ", Sentences: " + data.sentences);
+                $(document).ready(function(){
+                    $("#getJokeBtn").click(function(){
+                        $.get(businessTierUrl + "/getJoke", function(data, status){
+                            $("#jokeDisplay").html(data.joke);
+                            $("#jokeStats").html("Letters: " + data.letters + ", Words: " + data.words + ", Sentences: " + data.sentences);
+                        });
                     });
-                });
 
-                $("#addJokeBtn").click(function(){
-                    var joke = $("#newJoke").val();
-                    $.post(businessTierUrl + "/addJoke", { joke: joke }, function(data, status){
-                        alert("Joke added successfully!");
-                        $("#newJoke").val("");
+                    $("#addJokeBtn").click(function(){
+                        var joke = $("#newJoke").val();
+                        $.ajax({
+                            url: businessTierUrl + "/addJoke",
+                            type: 'POST',
+                            contentType: 'application/json', // Set the content type to JSON
+                            data: JSON.stringify({ joke: joke }), // Convert the data to a JSON string
+                            success: function(data, status) {
+                                alert("Joke added successfully!");
+                                $("#newJoke").val("");
+                            },
+                            error: function(xhr, status, error) {
+                                alert("Error: " + xhr.responseText);
+                            }
+                        });
                     });
                 });
-            });
         </script>
     </body>
 </html>
