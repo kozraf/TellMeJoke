@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: 'https://github.com/kozraf/tellmejoke.git'
     targetRevision: HEAD
-    path: tellmejoke
+    path: /
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default
