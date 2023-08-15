@@ -1,0 +1,33 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      securityContext:
+        fsGroup: 999 # GID of 'mysql' user in the container
+        runAsUser: 999
+      containers:
+      - name: mysql
+        image: mysql:latest
+        imagePullPolicy: Always
+        volumeMounts:
+        - name: tellmejoke-pv
+          mountPath: /var/lib/mysql
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: mysecretpassword
+      volumes:
+      - name: tellmejoke-pv
+        persistentVolumeClaim:
+          claimName: tellmejoke-pvc

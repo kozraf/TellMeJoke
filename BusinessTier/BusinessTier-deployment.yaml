@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: business-tier-deployment
+  labels:
+    app: business-tier
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: business-tier
+  template:
+    metadata:
+      labels:
+        app: business-tier
+    spec:
+      containers:
+      - name: business-tier
+        image: kozraf/tellmejoke-businesstier:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
