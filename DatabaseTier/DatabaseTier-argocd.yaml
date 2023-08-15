@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: tellmejoke-dataabsetier
+  name: tellmejoke-databasetier
   namespace: argocd
 spec:
   project: default
