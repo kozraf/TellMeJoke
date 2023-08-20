@@ -8,17 +8,17 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: DatabaseTier
+      app: databasetier
   template:
     metadata:
       labels:
-        app: DatabaseTier
+        app: databasetier
     spec:
       securityContext:
         fsGroup: 999 # GID of 'mysql' user in the container
         runAsUser: 999
       containers:
-      - name: DatabaseTier
+      - name: databasetier
         image: mysql:latest
         imagePullPolicy: Always
         volumeMounts:
