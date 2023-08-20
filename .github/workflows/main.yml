@@ -21,6 +21,14 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      - name: Build and Push Database Tier Dockerfile
+        uses: docker/build-push-action@v2
+        with:
+          context: DatabaseTier
+          file: DatabaseTier/Dockerfile
+          push: true
+          tags: kozraf/tellmejoke-databasetier:latest
+
       - name: Build and Push Business Tier Dockerfile
         uses: docker/build-push-action@v2
         with:

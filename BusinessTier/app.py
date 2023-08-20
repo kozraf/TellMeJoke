@@ -8,7 +8,7 @@ db_host = "database-tier-service"
 db_port = 3306
 db_user = "root"
 db_password = "mysecretpassword"
-db_name = "your_database_name"  # Update with the actual database name
+db_name = "jokes_db"  # Update with the actual database name
 
 # Function to establish a connection to the database
 def connect_to_db():
