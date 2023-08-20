@@ -2,23 +2,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mysql
+  name: DatabaseTier
   namespace: default
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mysql
+      app: DatabaseTier
   template:
     metadata:
       labels:
-        app: mysql
+        app: DatabaseTier
     spec:
       securityContext:
         fsGroup: 999 # GID of 'mysql' user in the container
         runAsUser: 999
       containers:
-      - name: mysql
+      - name: DatabaseTier
         image: mysql:latest
         imagePullPolicy: Always
         volumeMounts:
