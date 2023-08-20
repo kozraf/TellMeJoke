@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: 'https://github.com/kozraf/tellmejoke.git'
-    targetRevision: dev
+    targetRevision: basic-3tierapp-argocd
     path: DatabaseTier
   destination:
     server: 'https://kubernetes.default.svc'
