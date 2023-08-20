@@ -1,6 +1,34 @@
 from flask import Flask, request
 from flask_cors import CORS
 import random
+import mysql.connector
+
+# Database connection details
+db_host = "database-tier-service"
+db_port = 3306
+db_user = "root"
+db_password = "mysecretpassword"
+db_name = "your_database_name"  # Update with the actual database name
+
+# Function to establish a connection to the database
+def connect_to_db():
+    try:
+        connection = mysql.connector.connect(
+            host=db_host,
+            port=db_port,
+            user=db_user,
+            password=db_password,
+            database=db_name
+        )
+        return connection
+    except Exception as e:
+        print(f"Error connecting to database: {e}")
+        return None
+
+# Function to close the database connection
+def close_db_connection(connection):
+    if connection:
+        connection.close()
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS
