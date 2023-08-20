@@ -1,3 +1,4 @@
-TellMeJoke works!
+TellMeJoke version 1.0
+3 tiers (Database / Business / Presentation)
 
-Now polishing :)
+Deployed as 3 apps in ArgoCD
