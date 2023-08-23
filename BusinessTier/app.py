@@ -24,12 +24,12 @@ def get_joke():
         database=db_name
     )
     cursor = conn.cursor()
-    cursor.execute("SELECT joke FROM jokes ORDER BY RAND() LIMIT 1")
+    cursor.execute("SELECT joke, words, letters, sentences FROM jokes ORDER BY RAND() LIMIT 1")
     result = cursor.fetchone()
     cursor.close()
     conn.close()
     if result:
-        return jsonify({'joke': result[0]})
+        return jsonify({'joke': result[0], 'words': result[1], 'letters': result[2], 'sentences': result[3]})
     else:
         return jsonify({'joke': 'No jokes found'})
 
