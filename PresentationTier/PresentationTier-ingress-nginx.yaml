@@ -15,11 +15,11 @@ spec:
           service:
             name: presentation-tier-service
             port:
-              number: 80
+              number: 8080
       - path: /business
         pathType: Prefix
         backend:
           service:
             name: business-tier-service
             port:
-              number: 80
+              number: 80  # Assuming the business-tier-service is listening on port 80, adjust if needed
