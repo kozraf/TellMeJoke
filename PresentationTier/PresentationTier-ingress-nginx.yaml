@@ -4,6 +4,7 @@ metadata:
   name: tellmejoke-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
   - host: tellmejoke.local
@@ -23,3 +24,4 @@ spec:
             name: business-tier-service
             port:
               number: 80  # Assuming the business-tier-service is listening on port 80, adjust if needed
+
