@@ -18,7 +18,7 @@
         <p id="jokeStats"></p>
 
         <script>
-            var businessTierUrl = "http://192.168.89.142:30086"; // Replace with the actual external IP
+            var businessTierUrl = "http://tellmejoke.local/business"; // check external IP with 'kubectl get svc -n ingress-nginx'
 
             $(document).ready(function(){
                 $("#getJokeBtn").click(function(){
