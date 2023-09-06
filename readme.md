@@ -1,4 +1,4 @@
-TellMeJoke version 1.0
+TellMeJoke version 1.3
 3 tiers (Database / Business / Presentation)
 
 Deployed as 3 apps in ArgoCD:
