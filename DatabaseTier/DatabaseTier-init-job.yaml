@@ -6,6 +6,17 @@ metadata:
 spec:
   template:
     spec:
+      initContainers:
+      - name: check-database-ready
+        image: appropriate/curl
+        command:
+        - "sh"
+        - "-c"
+        - |
+          until nc -z database-tier-service 3306; do
+            echo "Waiting for database-tier-deployment to be ready..."
+            sleep 10
+          done
       containers:
       - name: database-init
         image: kozraf/tellmejoke-databasetier:latest
@@ -24,3 +35,4 @@ spec:
         - |
           mysql -h $MYSQL_HOST -P $MYSQL_PORT -u $MYSQL_USER -p$MYSQL_PASSWORD < /docker-entrypoint-initdb.d/init.sql
       restartPolicy: Never
+
