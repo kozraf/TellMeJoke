@@ -5,7 +5,7 @@ metadata:
   namespace: default
   annotations:
       kubernetes.io/ingress.class: "nginx"
-    nginx.ingress.kubernetes.io/rewrite-target: /
+  nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
   - host: tellmejoke.local # This can be any domain you wish. For local testing, you can adjust your hosts file.
