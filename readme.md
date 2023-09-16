@@ -2,8 +2,8 @@
 
 This repository contains the Kubernetes manifests and associated files for deploying the TellMeJoke application. The application consists of three main components: `DatabaseTier`, `BusinessTier`, and `PresentationTier`.
 
-# Version 1.2.2
-- added automation for deployment in ArgoCD as well as Docker images versioning
+# Version 1.3
+- added ingress 
 
 ## Initial Setup
 
@@ -49,6 +49,7 @@ The `PresentationTier` provides the frontend interface for users to interact wit
 - `PresentationTier-argocd-createapp.yaml`: ArgoCD application definition for the presentation tier.
 - `PresentationTier-deployment.yaml`: Kubernetes deployment manifest for the presentation tier.
 - `PresentationTier-service.yaml`: Kubernetes service to access the presentation tier frontend.
+- `PresentationTier-ingress-controller.yaml`: Kubernetes ingress controller.
 
 ## Deployment
 
