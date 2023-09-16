@@ -2,7 +2,7 @@ name: Docker Build & Push
 on:
   push:
     branches:
-      - basic-3tierapp-argocd
+      - v1.3
 
 jobs:
   build_and_push:
