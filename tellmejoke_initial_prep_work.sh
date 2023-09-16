@@ -9,6 +9,12 @@ sudo mkdir -p /srv/nfs/k8s/tellmejoke_app-pv
 sudo chown nobody:nogroup /srv/nfs/k8s/tellmejoke_app-pv
 sudo chmod 777 /srv/nfs/k8s/tellmejoke_app-pv
 
+#Install ingress-controller
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm repo update
+kubectl create namespace ingress-nginx
+helm install ingress-nginx ingress-nginx/ingress-nginx --namespace ingress-nginx
+
 # Get the name of the ArgoCD server pod
 ARGOCD_SERVER_POD=$(kubectl get pods -n argocd -l app.kubernetes.io/name=argocd-server -o jsonpath='{.items[0].metadata.name}')
 
