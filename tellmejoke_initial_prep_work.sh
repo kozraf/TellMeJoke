@@ -2,7 +2,7 @@
 
 # Initial Preparation Work
 # Pull repo from github
-sudo git clone -b basic-3tierapp-argocd https://github.com/kozraf/TellMeJoke.git /home/vagrant/RafK8clstr/TellMeJoke
+sudo git clone -b v1.3 https://github.com/kozraf/TellMeJoke.git /home/vagrant/RafK8clstr/TellMeJoke
 
 # Create NFS directories for TellMeJoke app
 sudo mkdir -p /srv/nfs/k8s/tellmejoke_app-pv
