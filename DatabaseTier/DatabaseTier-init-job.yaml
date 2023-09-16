@@ -19,7 +19,7 @@ spec:
           done
       containers:
       - name: database-init
-        image: kozraf/tellmejoke-databasetier:latest
+        image: kozraf/tellmejoke-databasetier:1.2.2
         env:
         - name: MYSQL_HOST
           value: database-tier-service
