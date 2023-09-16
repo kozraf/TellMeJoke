@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: business-tier
-        image: kozraf/tellmejoke-businesstier:latest
+        image: kozraf/tellmejoke-businesstier:1.2.1
         imagePullPolicy: Always
         ports:
         - containerPort: 80
