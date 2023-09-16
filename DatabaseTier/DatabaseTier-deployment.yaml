@@ -19,7 +19,7 @@ spec:
         runAsUser: 999
       containers:
       - name: database-tier
-        image: mysql:1.2.1
+        image: mysql:latest
         imagePullPolicy: Always
         volumeMounts:
         - name: tellmejoke-pv
