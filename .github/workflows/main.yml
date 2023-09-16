@@ -27,7 +27,7 @@ jobs:
           context: DatabaseTier
           file: DatabaseTier/Dockerfile
           push: true
-          tags: kozraf/tellmejoke-databasetier:1.2.1
+          tags: kozraf/tellmejoke-databasetier:1.2.2
 
       - name: Build and Push Business Tier Dockerfile
         uses: docker/build-push-action@v2
@@ -35,7 +35,7 @@ jobs:
           context: BusinessTier
           file: BusinessTier/Dockerfile
           push: true
-          tags: kozraf/tellmejoke-businesstier:1.2.1
+          tags: kozraf/tellmejoke-businesstier:1.2.2
 
       - name: Build and Push Presentation Tier Dockerfile
         uses: docker/build-push-action@v2
@@ -43,4 +43,4 @@ jobs:
           context: PresentationTier
           file: PresentationTier/Dockerfile
           push: true
-          tags: kozraf/tellmejoke-presentationtier:1.2.1
+          tags: kozraf/tellmejoke-presentationtier:1.2.2
