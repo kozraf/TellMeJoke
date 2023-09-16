@@ -41,3 +41,10 @@ sleep 60
 kubectl exec -n argocd $ARGOCD_SERVER_POD -- argocd app create --server localhost:8080 --file /tmp/PresentationTier-argocd-createapp.yaml --insecure
 
 echo "Deployment completed!"
+echo "Here is the port that tellmejoke.local site that ingress controller maps to port 80:"
+kubectl get svc ingress-nginx-controller -n ingress-nginx
+echo "Edit your hosts file and add:"
+echo "node_IP tellmejoke.local site"
+kubectl get no -o wide
+echo "Access the app using http://tellmejoke.local:ingress_port"
+echo "!Have fun!"
