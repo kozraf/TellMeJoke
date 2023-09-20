@@ -28,6 +28,12 @@
             button:hover {
                 background-color: #2980b9;
             }
+            #addJokeBtn {
+                background-color: #28a745;
+            }
+            #addJokeBtn:hover {
+                background-color: #218738;
+            }
             #loadingSpinner {
                 display: none;
                 width: 30px;
@@ -53,15 +59,15 @@
         </style>
     </head>
     <body>
-        <div class="container">
-            <h1>Welcome to "Tell Me a Joke"!</h1>
-            <button id="getJokeBtn">Tell me a joke</button>
+        <div class="container" style="text-align: center;">
+            <div style="text-align: center;"><h1>Welcome to "Tell Me a Joke"!</h1></div>
+            <div style="text-align: center;"><button id="getJokeBtn">Tell me a joke</button></div>
             <div id="loadingSpinner"></div>
             <p id="jokeDisplay"></p>
             <p class="error" id="jokeError"></p>
 
             <h3>Add a Joke:</h3>
-            <textarea id="newJoke" rows="4" cols="50"></textarea>
+            <textarea id="newJoke" rows="4" cols="50"></textarea><br>
             <button id="addJokeBtn">Add Joke</button>
             <p class="error" id="addJokeError"></p>
 
