@@ -123,10 +123,23 @@ To deploy the application, follow the steps:
 
 - Kubernetes: The entire application is containerized and orchestrated using Kubernetes, ensuring high availability and fault tolerance.
 - ArgoCD: Continuous Deployment is managed through ArgoCD, enabling automatic deployments and rollbacks based on Git changes.
+- Helm: Streamline the deployment and management of Kubernetes applications, such as the NGINX Ingress Controller, by using pre-configured Helm charts
 - Docker: All tiers of the application are containerized using Docker, ensuring consistency across different environments.
-- Python: The BusinessTier is written in Python, leveraging its simplicity and vast libraries.
+- GitHub Actions: automates software workflows, allowing for continuous integration and continuous deployment by automatically testing, building, and deploying code changes to the Kubernetes cluster via ArgoCD
 - MySQL: The DatabaseTier uses MySQL, a reliable and widely-used relational database system.
 - NGINX: The PresentationTier uses NGINX to serve the static HTML content.
+- Python: The BusinessTier is written in Python, leveraging its simplicity and vast libraries.
+- Flask: Acts as the backend API server in the BusinessTier, handling HTTP requests, interacting with the MySQL database, and returning data to the frontend PresentationTier
+
+<a href="https://kubernetes.io/" title="kubernetes"><img src="icons/k8.png" /></a>
+<a href="https://argo-cd.readthedocs.io/" title="argo-cd"><img src="icons/argocd.png" /></a>
+<a href="https://helm.sh/" title="helm"><img src="icons/helm.png" /></a>
+<a href="https://www.docker.com/" title="Docker"><img src="icons/docker.png" /></a>
+<a href="https://www.github.com/" title="github"><img src="icons/github.png" /></a>
+<a href="https://www.mysql.com/" title="mysql"><img src="icons/mysql.png" /></a>
+<a href="https://www.nginx.com/" title="nginx"><img src="icons/nginx.png" /></a>
+<a href="https://www.python.org/" title="python"><img src="icons/python.png" /></a>
+<a href="https://flask.palletsprojects.com/" title="flask"><img src="icons/flask.png" /></a>
 
 ## Roadmap
 
