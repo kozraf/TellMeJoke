@@ -1,30 +1,90 @@
+
 <!DOCTYPE html>
 <html>
     <head>
         <title>Tell Me a Joke</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 40px;
+                background-color: #f4f4f4;
+            }
+            .container {
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+            button {
+                background-color: #3498db;
+                color: white;
+                border: none;
+                padding: 10px 15px;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+            button:hover {
+                background-color: #2980b9;
+            }
+            #loadingSpinner {
+                display: none;
+                width: 30px;
+                height: 30px;
+                border: 5px solid #f3f3f3;
+                border-radius: 50%;
+                border-top: 5px solid #3498db;
+                animation: spin 1s linear infinite;
+            }
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+            .error {
+                color: red;
+                margin-top: 10px;
+            }
+            footer {
+                margin-top: 30px;
+                font-size: 0.8em;
+                color: #888;
+            }
+        </style>
     </head>
     <body>
-        <h1>Welcome to "Tell Me a Joke"! - v1.02</h1>
+        <div class="container">
+            <h1>Welcome to "Tell Me a Joke"!</h1>
+            <button id="getJokeBtn">Tell me a joke</button>
+            <div id="loadingSpinner"></div>
+            <p id="jokeDisplay"></p>
+            <p class="error" id="jokeError"></p>
 
-        <button id="getJokeBtn">Tell me a joke</button>
-        <p id="jokeDisplay"></p>
+            <h3>Add a Joke:</h3>
+            <textarea id="newJoke" rows="4" cols="50"></textarea>
+            <button id="addJokeBtn">Add Joke</button>
+            <p class="error" id="addJokeError"></p>
 
-        <h3>Add a Joke:</h3>
-        <textarea id="newJoke" rows="4" cols="50"></textarea>
-        <button id="addJokeBtn">Add Joke</button>
-
-        <h3>Joke Stats:</h3>
-        <p id="jokeStats"></p>
+            <h3>Joke Stats:</h3>
+            <p id="jokeStats"></p>
+        </div>
+        <footer>
+            Version: v1.02
+        </footer>
 
         <script>
             var businessTierUrl = "http://192.168.89.142:30086"; // Replace with the actual external IP
 
             $(document).ready(function(){
                 $("#getJokeBtn").click(function(){
+                    $("#loadingSpinner").show();
                     $.get(businessTierUrl + "/getJoke", function(data, status){
                         $("#jokeDisplay").html(data.joke);
                         $("#jokeStats").html("Letters: " + data.letters + ", Words: " + data.words + ", Sentences: " + data.sentences);
+                        $("#loadingSpinner").hide();
+                    }).fail(function(xhr, status, error){
+                        $("#jokeError").html("Error fetching joke. Please try again later.");
+                        $("#loadingSpinner").hide();
                     });
                 });
 
@@ -33,15 +93,14 @@
                     $.ajax({
                         url: businessTierUrl + "/addJoke",
                         type: 'POST',
-                        contentType: 'application/json', // Set the content type to JSON
-                        data: JSON.stringify({ joke: joke }), // Convert the data to a JSON string
+                        contentType: 'application/json',
+                        data: JSON.stringify({ joke: joke }),
                         success: function(data, status) {
-                            alert(data.message); // Use the message from the server response
                             $("#newJoke").val("");
                         },
                         error: function(xhr, status, error) {
                             var response = JSON.parse(xhr.responseText);
-                            alert("Error: " + response.message + "\nData: " + response.data);
+                            $("#addJokeError").html("Error: " + response.message);
                         }
                     });
                 });
@@ -49,4 +108,3 @@
         </script>
     </body>
 </html>
-
